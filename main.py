@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def main():
-    return "Usage: http://***.com/{put your payload}"
+    return "Usage: <a>https://redos-server.herokuapp.com/{put_your_payload}</a>"
 
 
 @app.route("/<payload>", methods=["GET"])

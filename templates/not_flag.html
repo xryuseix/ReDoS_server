@@ -1,9 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head> </head>
+  <head>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  </head>
   <body>
     You could not get the flag.<br />
     Your input: <b>{{payload}}</b><br />
     Exec time: <b>{{time}}</b>
+    <hr />
+    <pre><code class="prettyprint lang-py">
+      from flask import *
+      import re
+      from datetime import datetime
+
+      app = Flask(__name__)
+
+
+      @app.route("/", methods=["GET"])
+      def main():
+          return "Usage: &lt;a>https://redos-server.herokuapp.com/{put_your_payload}&lt;/a>"
+
+
+      @app.route("/&lt;payload>", methods=["GET"])
+      def hello_name(payload):
+          payload = payload[:30]
+
+          start = datetime.now()
+          re.match(r"^(a+)+b$", payload)
+          time = (datetime.now() - start).total_seconds()
+
+          if time > 11:
+              return render_template("flag.html", payload=payload, time=time)
+          else:
+              return render_template("not_flag.html", payload=payload, time=time)
+  </code></pre>
   </body>
 </html>
