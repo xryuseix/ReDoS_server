@@ -12,7 +12,9 @@ def main():
 
 @app.route("/<payload>", methods=["GET"])
 def hello_name(payload):
-    payload = payload[:30]
+    
+    if len(payload) > 30:
+        return "payload is too long! <a href=https://redos-server.herokuapp.com>[back]</a>"
 
     start = datetime.now()
     re.match(r"^(a+)+b$", payload)
