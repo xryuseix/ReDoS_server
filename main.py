@@ -20,7 +20,7 @@ def hello_name(payload):
     re.match(r"^(a+)+b$", payload)
     time = (datetime.now() - start).total_seconds()
 
-    if time > 3:
+    if time > 2:
         return render_template("flag.html", payload=payload, time=time)
     else:
         return render_template("not_flag.html", payload=payload, time=time)
