@@ -11,7 +11,7 @@ def main():
 
 
 @app.route("/<payload>", methods=["GET"])
-def hello_name(payload):
+def get_flag(payload):
     
     if len(payload) > 25:
         return "payload is too long! <a href=https://redos-server.herokuapp.com>[back]</a>"
