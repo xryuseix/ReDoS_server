@@ -13,14 +13,14 @@ def main():
 @app.route("/<payload>", methods=["GET"])
 def get_flag(payload):
     
-    if len(payload) > 25:
+    if len(payload) > 100:
         return "payload is too long! <a href=https://redos-server.herokuapp.com>[back]</a>"
 
     start = datetime.now()
     re.match(r"^(a+)+b$", payload)
     time = (datetime.now() - start).total_seconds()
 
-    if time > 2:
+    if time > 3:
         return render_template("flag.html", payload=payload, time=time)
     else:
         return render_template("not_flag.html", payload=payload, time=time)
